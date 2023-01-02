@@ -165,7 +165,7 @@ jobs:
             diff test/kubelogo.png /tmp/secret-kubelogo.png &&
             echo -n "This absolutely exists" | diff - /tmp/absolute.txt &&
             echo -n "This relatively exists" | diff - /tmp/relative.txt &&
-            echo -n "This orig-dir exists" | diff - /tmp/change-dir.txt &&
+            echo -n "This change-dir exists" | diff - /tmp/change-dir.txt &&
             echo -n "allowed" | diff - /tmp/secured.txt &&
             echo -n '{"detail":"Not authenticated"}' | diff - /tmp/5xx/secured.txt &&
             [ ! -f /tmp/500.txt ] && echo "No 5xx file created" &&
@@ -175,7 +175,7 @@ jobs:
             diff test/kubelogo.png /tmp/5xx/secret-kubelogo.png &&
             echo -n "This absolutely exists" | diff - /tmp/5xx/absolute.txt &&
             echo -n "This relatively exists" | diff - /tmp/5xx/relative.txt &&
-            echo -n "This new-dir exists" | diff - /tmp/5xx/change-dir.txt &&
+            echo -n "This change-dir exists" | diff - /tmp/5xx/change-dir.txt &&
             echo -n "500" | diff - /tmp/5xx/500.txt &&
             ls /tmp/5xx/script_result &&
             kubectl exec sidecar -- sh -c "ls /tmp/" &&
