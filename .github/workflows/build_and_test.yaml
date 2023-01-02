@@ -120,7 +120,7 @@ jobs:
           kubectl cp sidecar:/tmp/script_result /tmp/script_result
           kubectl cp sidecar:/tmp/absolute/absolute.txt /tmp/absolute.txt
           kubectl cp sidecar:/tmp/relative/relative.txt /tmp/relative.txt
-          kubectl cp sidecar:/tmp/old-dir/change-dir.txt /tmp/change-dir.txt
+          kubectl cp sidecar:/tmp/orig-dir/change-dir.txt /tmp/change-dir.txt
           kubectl cp sidecar:/tmp/500.txt /tmp/500.txt || true
           kubectl cp sidecar:/tmp/secured.txt /tmp/secured.txt
 
@@ -133,7 +133,7 @@ jobs:
           # absolute path in configmap points to /tmp in 'absolute-configmap'
           kubectl cp sidecar-5xx:/tmp/absolute/absolute.txt /tmp/5xx/absolute.txt
           kubectl cp sidecar-5xx:/tmp-5xx/relative/relative.txt /tmp/5xx/relative.txt
-          kubectl cp sidecar-5xx:/tmp-5xx/old-dir/change-dir.txt /tmp/5xx/change-dir.txt
+          kubectl cp sidecar-5xx:/tmp-5xx/orig-dir/change-dir.txt /tmp/5xx/change-dir.txt
           kubectl cp sidecar-5xx:/tmp-5xx/500.txt /tmp/5xx/500.txt
           kubectl cp sidecar-5xx:/tmp-5xx/secured.txt /tmp/5xx/secured.txt
 
@@ -184,4 +184,4 @@ jobs:
             kubectl exec sidecar -- sh -c "! test -e /tmp/secret-kubelogo.png" && kubectl exec sidecar -- sh -c "test -e /tmp/change-secret-kubelogo.png" &&
             kubectl exec sidecar -- sh -c "! test -e /tmp/absolute/absolute.txt" && kubectl exec sidecar -- sh -c "test -e /tmp/absolute/change-absolute.txt" &&
             kubectl exec sidecar -- sh -c "! test -e /tmp/relative/relative.txt" && kubectl exec sidecar -- sh -c "test -e /tmp/relative/change-relative.txt" &&
-            kubectl exec sidecar -- sh -c "! test -e /tmp/old-dir/change-dir.txt" && kubectl exec sidecar -- sh -c "test -e /tmp/new-dir/change-dir.txt"
+            kubectl exec sidecar -- sh -c "! test -e /tmp/orig-dir/change-dir.txt" && kubectl exec sidecar -- sh -c "test -e /tmp/new-dir/change-dir.txt"
